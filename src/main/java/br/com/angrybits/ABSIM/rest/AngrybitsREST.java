@@ -18,7 +18,6 @@ import br.gov.frameworkdemoiselle.util.ValidatePayload;
 public class AngrybitsREST{
 	
 	@POST
-	@LoggedIn
 	@Transactional
 	@ValidatePayload
 	@Produces("application/json")
@@ -26,6 +25,7 @@ public class AngrybitsREST{
 	public Response inserir(@Context UriInfo uriInfo){
 		String id = "OK";
 		URI location = uriInfo.getRequestUriBuilder().path(id).build();
+		System.out.println("Recebendo dados");
 		return Response.created(location).entity(id).build();
 	}
 
