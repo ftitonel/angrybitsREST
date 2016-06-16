@@ -8,4 +8,9 @@ import br.gov.frameworkdemoiselle.template.DelegateCrud;
 @BusinessController
 public class ConsumoBC extends DelegateCrud<Consumo, Long, ConsumoDAO>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }
