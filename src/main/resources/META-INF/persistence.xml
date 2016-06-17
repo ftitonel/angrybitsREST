@@ -5,7 +5,7 @@
 	<!-- If you are using JBoss AS7 with non JTA transaction then use this persistence-unit -->
 	<!--
 	-->
-	<persistence-unit name="bookmark-ds" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="angrybits-ds" transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>java:jboss/datasources/ExampleDS</non-jta-data-source>
 
 		<class>br.com.angrybits.ABSIM.entity.Consumo</class>
