@@ -18,11 +18,11 @@ public class Consumo implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int id;
+	private Integer id;
 	
 	private String consumo;	
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
