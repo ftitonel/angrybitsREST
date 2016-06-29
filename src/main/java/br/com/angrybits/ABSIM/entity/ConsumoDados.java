@@ -1,12 +1,14 @@
 package br.com.angrybits.ABSIM.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class ConsumoDados implements Serializable{
@@ -18,9 +20,10 @@ public class ConsumoDados implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private Integer id;
+	private Long id;
 	
-	private Date dtInicio;
+	
+	private Date dtInicio;	
 	private Date dtFim;
 	private String nomeApp;
 	private float download;
@@ -59,7 +62,7 @@ public class ConsumoDados implements Serializable{
 	}
 
 	//GETTERS AND SETTERS	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
