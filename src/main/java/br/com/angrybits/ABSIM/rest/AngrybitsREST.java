@@ -28,22 +28,29 @@ public class AngrybitsREST{
 	@ValidatePayload
 	@Produces("application/json")
 	@Consumes("application/json")
+	
 	public Response inserir(ConsumoBody body, @Context UriInfo uriInfo){		
+		String id = "";
+		for(Consumo cons : body.dados ){
 		ConsumoDados consumo = new ConsumoDados();
-		consumo.setDtInicio(body.dt_inicio);
-		consumo.setDtFim(body.dt_fim);
-		consumo.setNomeApp(body.nome_app);
-		consumo.setDownload(body.download);
-		consumo.setUpload(body.upload);
-		consumo.setRede(body.rede);
-		consumo.setIdApp(body.id_app);
-		
-		String id = consumoBC.insert(consumo).getId().toString();
-		URI location = uriInfo.getRequestUriBuilder().path(id).build();
+		consumo.setDtInicio(cons.dt_inicio);
+		consumo.setDtFim(cons.dt_fim);
+		consumo.setNomeApp(cons.nome_app);
+		consumo.setDownload(cons.download);
+		consumo.setUpload(cons.upload);
+		consumo.setRede(cons.rede);
+		consumo.setIdApp(cons.id_app);		
+		id = consumoBC.insert(consumo).getId().toString();		
+		}
+		URI location = uriInfo.getRequestUriBuilder().path(id).build();		
 		return Response.created(location).entity(id).build();
 	}
 	
 	public static class ConsumoBody{
+		public Consumo[] dados;
+	}
+	
+	public static class Consumo{
 		
 		public Date dt_inicio;
 		public Date dt_fim;
