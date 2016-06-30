@@ -2,6 +2,7 @@ package br.com.angrybits.ABSIM.rest;
 
 import java.net.URI;
 import java.sql.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -27,8 +28,7 @@ public class AngrybitsREST{
 	@Transactional
 	@ValidatePayload
 	@Produces("application/json")
-	@Consumes("application/json")
-	
+	@Consumes("application/json")	
 	public Response inserir(ConsumoBody body, @Context UriInfo uriInfo){		
 		String id = "";
 		for(Consumo cons : body.dados ){
@@ -47,7 +47,7 @@ public class AngrybitsREST{
 	}
 	
 	public static class ConsumoBody{
-		public Consumo[] dados;
+		public List<Consumo> dados;
 	}
 	
 	public static class Consumo{
