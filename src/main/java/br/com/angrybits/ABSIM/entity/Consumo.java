@@ -2,16 +2,15 @@ package br.com.angrybits.ABSIM.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 @Entity
 public class Consumo implements Serializable{
@@ -22,14 +21,15 @@ public class Consumo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)	
+	private Long consumo_id;
 	private Date dataConsumo;
 	
-	@OneToMany(mappedBy="consumo", cascade=CascadeType.ALL )
+	
+	@OneToMany	(mappedBy="consumo", cascade=CascadeType.PERSIST)
 	private List<ConsumoDados> consumoDados;
 	
-	@OneToMany(mappedBy="consumo", cascade=CascadeType.ALL)
+	@OneToMany	(mappedBy="consumo", cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private List<ConsumoChamadas> consumoChamdas;
 	
 	public Consumo() {
@@ -40,7 +40,7 @@ public class Consumo implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((consumo_id == null) ? 0 : consumo_id.hashCode());
 		return result;
 	}
 	@Override
@@ -52,16 +52,16 @@ public class Consumo implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Consumo other = (Consumo) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (consumo_id == null) {
+			if (other.consumo_id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!consumo_id.equals(other.consumo_id))
 			return false;
 		return true;
 	}
 	//GETTERS AND SETTERS
-	public Integer getId() {
-		return id;
+	public Long getConsumo_id() {
+		return consumo_id;
 	}
 	
 	public Date getDataConsumo() {
@@ -74,12 +74,18 @@ public class Consumo implements Serializable{
 		return consumoDados;
 	}
 	public void setConsumoDados(List<ConsumoDados> consumoDados) {
+		for(ConsumoDados cd : consumoDados){
+			cd.setConsumo(this);
+		}		
 		this.consumoDados = consumoDados;
 	}
 	public List<ConsumoChamadas> getConsumoChamdas() {
 		return consumoChamdas;
 	}
 	public void setConsumoChamdas(List<ConsumoChamadas> consumoChamdas) {
+		for(ConsumoChamadas cc : consumoChamdas){
+			cc.setConsumo(this);
+		}
 		this.consumoChamdas = consumoChamdas;
 	}
 }

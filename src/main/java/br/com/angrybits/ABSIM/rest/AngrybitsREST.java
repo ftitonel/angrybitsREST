@@ -37,11 +37,19 @@ public class AngrybitsREST{
 		Consumo consumo = new Consumo();
 		
 		consumo.setDataConsumo(new Date(System.currentTimeMillis()));
+		
+//		for(ConsumoDados cd : body.dados){
+//			cd.setConsumo(consumo);
+//		}
+//		for(ConsumoChamadas cc : body.chamadas){
+//			cc.setConsumo(consumo);
+//		}
+		
 		consumo.setConsumoDados(body.dados);
 		consumo.setConsumoChamdas(body.chamadas);
 		
 		//RESPOSTA PARA CLIENTE
-		id = consumoBC.insert(consumo).getId().toString();		
+		id = consumoBC.insert(consumo).getConsumo_id().toString();
 		URI location = uriInfo.getRequestUriBuilder().path(id).build();		
 		return Response.created(location).entity(id).build();
 	}

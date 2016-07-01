@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class ConsumoDados implements Serializable{
@@ -20,7 +22,7 @@ public class ConsumoDados implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
 	
@@ -32,8 +34,9 @@ public class ConsumoDados implements Serializable{
 	private Integer rede;
 	private Integer id_app;
 	
+	
 	@ManyToOne
-	@JoinColumn(name="consumo_id", nullable = false, updatable = true, insertable = true)
+	@JoinColumn(name="consumo_id")
 	private Consumo consumo;
 	
 	public ConsumoDados() {
