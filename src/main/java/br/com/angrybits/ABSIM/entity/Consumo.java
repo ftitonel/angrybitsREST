@@ -2,12 +2,15 @@ package br.com.angrybits.ABSIM.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
@@ -19,12 +22,14 @@ public class Consumo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private Date dataConsumo;
-	@Transient
+	
+	@OneToMany(mappedBy="consumo", cascade=CascadeType.ALL )
 	private List<ConsumoDados> consumoDados;
-	@Transient
+	
+	@OneToMany(mappedBy="consumo", cascade=CascadeType.ALL)
 	private List<ConsumoChamadas> consumoChamdas;
 	
 	public Consumo() {
@@ -58,9 +63,7 @@ public class Consumo implements Serializable{
 	public Integer getId() {
 		return id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 	public Date getDataConsumo() {
 		return dataConsumo;
 	}
