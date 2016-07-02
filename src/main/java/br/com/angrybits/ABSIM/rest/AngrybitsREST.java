@@ -38,13 +38,6 @@ public class AngrybitsREST{
 		
 		consumo.setDataConsumo(new Date(System.currentTimeMillis()));
 		
-//		for(ConsumoDados cd : body.dados){
-//			cd.setConsumo(consumo);
-//		}
-//		for(ConsumoChamadas cc : body.chamadas){
-//			cc.setConsumo(consumo);
-//		}
-		
 		consumo.setConsumoDados(body.dados);
 		consumo.setConsumoChamdas(body.chamadas);
 		
