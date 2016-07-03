@@ -1,7 +1,7 @@
 package br.com.angrybits.ABSIM.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Consumo implements Serializable{
@@ -23,6 +25,7 @@ public class Consumo implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)	
 	private Long consumo_id;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataConsumo;
 	
 	

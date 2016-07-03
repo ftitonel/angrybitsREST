@@ -1,17 +1,17 @@
 package br.com.angrybits.ABSIM.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 @Entity
 public class ConsumoDados implements Serializable{
@@ -25,8 +25,11 @@ public class ConsumoDados implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
-	
-	private Date dt_inicio;	
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonDeserialize(using = CustomJsonDateDeserializer.class)
+	private Date dt_inicio;
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonDeserialize(using = CustomJsonDateDeserializer.class)
 	private Date dt_fim;
 	private String nome_app;
 	private float download;

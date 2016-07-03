@@ -1,17 +1,19 @@
 package br.com.angrybits.ABSIM.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 @Entity
 public class ConsumoChamadas implements Serializable{
@@ -25,14 +27,17 @@ public class ConsumoChamadas implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonDeserialize(using = CustomJsonDateDeserializer.class)
 	private Date dt_inicio;	
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonDeserialize(using = CustomJsonDateDeserializer.class)
 	private Date dt_fim;
 	private String nome_app;
 	private float download;
 	private float upload;
 	private Integer rede;
-	private Integer id_app;
-	
+	private Integer id_app;	
 	
 	@ManyToOne
 	@JoinColumn(name="consumo_id")
@@ -72,7 +77,14 @@ public class ConsumoChamadas implements Serializable{
 	}
 
 	//GETTERS AND SETTERS
+	
+	
 
+	public String getNome_app() {
+		return nome_app;
+	}
+
+	
 	public Date getDt_inicio() {
 		return dt_inicio;
 	}
@@ -97,8 +109,8 @@ public class ConsumoChamadas implements Serializable{
 
 
 
-	public String getNome_app() {
-		return nome_app;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 
@@ -107,67 +119,45 @@ public class ConsumoChamadas implements Serializable{
 		this.nome_app = nome_app;
 	}
 
-
-
 	public float getDownload() {
 		return download;
 	}
-
-
 
 	public void setDownload(float download) {
 		this.download = download;
 	}
 
-
-
 	public float getUpload() {
 		return upload;
 	}
-
-
 
 	public void setUpload(float upload) {
 		this.upload = upload;
 	}
 
-
-
 	public Integer getRede() {
 		return rede;
 	}
-
-
 
 	public void setRede(Integer rede) {
 		this.rede = rede;
 	}
 
-
-
 	public Integer getId_app() {
 		return id_app;
 	}
-
-
 
 	public void setId_app(Integer id_app) {
 		this.id_app = id_app;
 	}
 
-
-
 	public Consumo getConsumo() {
 		return consumo;
 	}
 
-
-
 	public void setConsumo(Consumo consumo) {
 		this.consumo = consumo;
 	}
-
-
 
 	public Long getId() {
 		return id;
