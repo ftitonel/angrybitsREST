@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
@@ -33,12 +32,11 @@ public class ConsumoChamadas implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonDeserialize(using = CustomJsonDateDeserializer.class)
 	private Date dt_fim;
-	private String nome_app;
-	private float download;
-	private float upload;
-	private Integer rede;
-	private Integer id_app;	
-	
+	private String numero_destino;
+	private String numero_origem;
+	private Integer duracao;
+	private String label;
+	private Integer numero_linha;
 	@ManyToOne
 	@JoinColumn(name="consumo_id")
 	private Consumo consumo;
@@ -76,15 +74,8 @@ public class ConsumoChamadas implements Serializable{
 		return true;
 	}
 
-	//GETTERS AND SETTERS
-	
-	
 
-	public String getNome_app() {
-		return nome_app;
-	}
 
-	
 	public Date getDt_inicio() {
 		return dt_inicio;
 	}
@@ -109,57 +100,82 @@ public class ConsumoChamadas implements Serializable{
 
 
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getNumero_destino() {
+		return numero_destino;
 	}
 
 
 
-	public void setNome_app(String nome_app) {
-		this.nome_app = nome_app;
+	public void setNumero_destino(String numero_destino) {
+		this.numero_destino = numero_destino;
 	}
 
-	public float getDownload() {
-		return download;
+
+
+	public String getNumero_origem() {
+		return numero_origem;
 	}
 
-	public void setDownload(float download) {
-		this.download = download;
+
+
+	public void setNumero_origem(String numero_origem) {
+		this.numero_origem = numero_origem;
 	}
 
-	public float getUpload() {
-		return upload;
+
+
+	public Integer getDuracao() {
+		return duracao;
 	}
 
-	public void setUpload(float upload) {
-		this.upload = upload;
+
+
+	public void setDuracao(Integer duracao) {
+		this.duracao = duracao;
 	}
 
-	public Integer getRede() {
-		return rede;
+
+
+	public String getLabel() {
+		return label;
 	}
 
-	public void setRede(Integer rede) {
-		this.rede = rede;
+
+
+	public void setLabel(String label) {
+		this.label = label;
 	}
 
-	public Integer getId_app() {
-		return id_app;
+
+
+	public Integer getNumero_linha() {
+		return numero_linha;
 	}
 
-	public void setId_app(Integer id_app) {
-		this.id_app = id_app;
+
+
+	public void setNumero_linha(Integer numero_linha) {
+		this.numero_linha = numero_linha;
 	}
+
+
 
 	public Consumo getConsumo() {
 		return consumo;
 	}
 
+
+
 	public void setConsumo(Consumo consumo) {
 		this.consumo = consumo;
 	}
 
+
+
 	public Long getId() {
 		return id;
 	}
+
+	//GETTERS AND SETTERS
+	
 }
