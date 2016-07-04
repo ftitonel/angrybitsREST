@@ -1,11 +1,13 @@
 package br.com.angrybits.ABSIM.persistence;
 
-import br.com.angrybits.ABSIM.entity.ConsumoDados;
+import br.com.angrybits.ABSIM.entity.Cliente;
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
 import br.gov.frameworkdemoiselle.template.JPACrud;
+import br.gov.frameworkdemoiselle.transaction.Transactional;
 
 @PersistenceController
-public class ConsumoDadosDAO extends JPACrud<ConsumoDados, Long> {
+@Transactional
+public class ClienteDAO extends JPACrud<Cliente, Long> {
 
 	/**
 	 * 

@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,6 +36,9 @@ public class Consumo implements Serializable{
 	
 	@OneToMany	(mappedBy="consumo", cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private List<ConsumoChamadas> consumoChamdas;
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
 	
 	public Consumo() {
 		// TODO Auto-generated constructor stub
@@ -91,4 +96,14 @@ public class Consumo implements Serializable{
 		}
 		this.consumoChamdas = consumoChamdas;
 	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	
 }

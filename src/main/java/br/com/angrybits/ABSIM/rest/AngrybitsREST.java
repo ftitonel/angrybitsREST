@@ -13,8 +13,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import br.com.angrybits.ABSIM.business.ClienteBC;
 import br.com.angrybits.ABSIM.business.ConsumoBC;
-import br.com.angrybits.ABSIM.business.ConsumoDadosBC;
+import br.com.angrybits.ABSIM.entity.Cliente;
 import br.com.angrybits.ABSIM.entity.Consumo;
 import br.com.angrybits.ABSIM.entity.ConsumoChamadas;
 import br.com.angrybits.ABSIM.entity.ConsumoDados;
@@ -26,6 +27,8 @@ public class AngrybitsREST{
 		
 	@Inject
 	private ConsumoBC consumoBC;
+	@Inject
+	private ClienteBC clienteBC;
 	
 	@POST
 	@Transactional
@@ -35,11 +38,17 @@ public class AngrybitsREST{
 	public Response inserir(ConsumoBody body, @Context UriInfo uriInfo){	
 		String id;
 		Consumo consumo = new Consumo();
+		Cliente cliente = new Cliente();
+		cliente.setTipo_usuario("Avilso");
+		cliente.setUsuario_celular("(85)99938-3404");
+		cliente.setUsuario_email("felipe.titonel@gmail.com");
+		
+		clienteBC.insert(cliente);
 		
 		consumo.setDataConsumo(new Date(System.currentTimeMillis()));
-		
 		consumo.setConsumoDados(body.dados);
 		consumo.setConsumoChamdas(body.chamadas);
+		consumo.setCliente(cliente);
 		
 		//RESPOSTA PARA CLIENTE
 		id = consumoBC.insert(consumo).getConsumo_id().toString();
