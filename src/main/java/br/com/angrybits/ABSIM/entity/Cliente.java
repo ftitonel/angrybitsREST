@@ -23,6 +23,7 @@ public class Cliente implements Serializable{
 	private String usuario_email;
 	private String  usuario_celular;
 	private String tipo_usuario;
+	private String token;
 	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
@@ -86,6 +87,11 @@ public class Cliente implements Serializable{
 	public void setConsumo(List<Consumo> consumo) {
 		this.consumo = consumo;
 	}
-	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	
 }
