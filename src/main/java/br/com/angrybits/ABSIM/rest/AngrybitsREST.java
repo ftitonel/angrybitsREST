@@ -19,6 +19,7 @@ import br.com.angrybits.ABSIM.entity.Cliente;
 import br.com.angrybits.ABSIM.entity.Consumo;
 import br.com.angrybits.ABSIM.entity.ConsumoChamadas;
 import br.com.angrybits.ABSIM.entity.ConsumoDados;
+import br.com.angrybits.ABSIM.entity.Token;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.ValidatePayload;
 
@@ -39,9 +40,10 @@ public class AngrybitsREST{
 		String id;
 		Consumo consumo = new Consumo();
 		Cliente cliente = new Cliente();
-		cliente.setTipo_usuario("Avilso");
-		cliente.setUsuario_celular("(85)99938-3404");
-		cliente.setUsuario_email("felipe.titonel@gmail.com");
+		cliente.setTipo_usuario("Fisica");
+		cliente.setUsuario_celular(body.usuario.get(0).getUsuario_celular());
+		cliente.setUsuario_email(body.usuario.get(0).getUsuario_email());
+		cliente.setToken(body.token.get(0).getToken());
 		
 		clienteBC.insert(cliente);
 		
@@ -61,7 +63,8 @@ public class AngrybitsREST{
 		public Date dataConsumo;
 		public List<ConsumoDados> dados;
 		public List<ConsumoChamadas> chamadas;
-		
+		public List<Token> token;
+		public List<Cliente> usuario;
 	}	
 	
 
