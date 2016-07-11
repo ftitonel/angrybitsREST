@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente implements Serializable{
@@ -23,7 +24,9 @@ public class Cliente implements Serializable{
 	private String usuario_email;
 	private String  usuario_celular;
 	private String tipo_usuario;
-	private String token;
+	
+	@OneToOne
+	private Token token;
 	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
@@ -31,9 +34,6 @@ public class Cliente implements Serializable{
 	
 	@OneToMany	(mappedBy="cliente")
 	private List<Consumo> consumo;
-	
-	
-	
 	
 	@Override
 	public int hashCode() {
@@ -87,11 +87,10 @@ public class Cliente implements Serializable{
 	public void setConsumo(List<Consumo> consumo) {
 		this.consumo = consumo;
 	}
-	public String getToken() {
+	public Token getToken() {
 		return token;
 	}
-	public void setToken(String token) {
+	public void setToken(Token token) {
 		this.token = token;
 	}
-	
 }

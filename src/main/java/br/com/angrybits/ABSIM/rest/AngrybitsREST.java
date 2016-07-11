@@ -43,7 +43,7 @@ public class AngrybitsREST{
 		cliente.setTipo_usuario("Fisica");
 		cliente.setUsuario_celular(body.usuario.get(0).getUsuario_celular());
 		cliente.setUsuario_email(body.usuario.get(0).getUsuario_email());
-		cliente.setToken(body.token.get(0).getToken());
+		cliente.setToken(body.token.get(0));
 		
 		clienteBC.insert(cliente);
 		
