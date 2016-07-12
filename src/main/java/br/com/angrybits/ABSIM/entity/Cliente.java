@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class Cliente implements Serializable{
 	private String  usuario_celular;
 	private String tipo_usuario;
 	
-	@OneToOne
+	@OneToOne(mappedBy="cliente", cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private Token token;
 	
 	public Cliente() {
@@ -91,6 +92,7 @@ public class Cliente implements Serializable{
 		return token;
 	}
 	public void setToken(Token token) {
+		token.setCliente(this);
 		this.token = token;
 	}
 }

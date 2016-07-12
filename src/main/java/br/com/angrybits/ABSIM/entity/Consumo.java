@@ -31,10 +31,10 @@ public class Consumo implements Serializable{
 	private Date dataConsumo;
 	
 	
-	@OneToMany	(mappedBy="consumo", cascade=CascadeType.PERSIST)
+	@OneToMany	(mappedBy="consumo", cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
 	private List<ConsumoDados> consumoDados;
 	
-	@OneToMany	(mappedBy="consumo", cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@OneToMany	(mappedBy="consumo", cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
 	private List<ConsumoChamadas> consumoChamdas;
 	@ManyToOne
 	@JoinColumn(name="cliente_id")

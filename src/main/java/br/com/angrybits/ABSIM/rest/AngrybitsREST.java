@@ -37,20 +37,22 @@ public class AngrybitsREST{
 	@Produces("application/json")
 	@Consumes("application/json")	
 	public Response inserir(ConsumoBody body, @Context UriInfo uriInfo){	
-		String id;
+		String id="";	
+		
 		Consumo consumo = new Consumo();
 		Cliente cliente = new Cliente();
+				
 		cliente.setTipo_usuario("Fisica");
 		cliente.setUsuario_celular(body.usuario.get(0).getUsuario_celular());
-		cliente.setUsuario_email(body.usuario.get(0).getUsuario_email());
+		cliente.setUsuario_email(body.usuario.get(0).getUsuario_email());		
 		cliente.setToken(body.token.get(0));
-		
-		clienteBC.insert(cliente);
 		
 		consumo.setDataConsumo(new Date(System.currentTimeMillis()));
 		consumo.setConsumoDados(body.dados);
 		consumo.setConsumoChamdas(body.chamadas);
 		consumo.setCliente(cliente);
+				
+		clienteBC.insert(cliente);
 		
 		//RESPOSTA PARA CLIENTE
 		id = consumoBC.insert(consumo).getConsumo_id().toString();

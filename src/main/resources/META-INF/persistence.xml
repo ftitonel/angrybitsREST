@@ -13,7 +13,7 @@
 		<class>br.com.angrybits.ABSIM.entity.ConsumoDados</class>
 		<class>br.com.angrybits.ABSIM.entity.ConsumoChamadas</class>
 		<class>br.com.angrybits.ABSIM.entity.Cliente</class>
-		
+		<class>br.com.angrybits.ABSIM.entity.Token</class>
 
 
 		<properties>

@@ -26,7 +26,7 @@ public class Token implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_Atualizacao;
 	
-	@OneToOne(mappedBy="token")
+	@OneToOne
 	private Cliente cliente;
 	
 	@Override
