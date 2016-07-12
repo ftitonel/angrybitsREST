@@ -54,6 +54,8 @@ public class AngrybitsREST{
 				
 		clienteBC.insert(cliente);
 		
+		clienteBC.findByEmail(body.usuario.get(0).getUsuario_email());
+		
 		//RESPOSTA PARA CLIENTE
 		id = consumoBC.insert(consumo).getConsumo_id().toString();
 		URI location = uriInfo.getRequestUriBuilder().path(id).build();		

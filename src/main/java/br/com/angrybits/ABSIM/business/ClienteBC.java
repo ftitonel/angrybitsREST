@@ -14,5 +14,9 @@ public class ClienteBC extends DelegateCrud<Cliente, Long, ClienteDAO>{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public Cliente findByEmail(String email){
+		return ClienteDAO.getInstance().findByEmail(email);
+	}
 
 }
