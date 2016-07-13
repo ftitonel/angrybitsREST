@@ -3,7 +3,9 @@ package br.com.angrybits.ABSIM.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +28,7 @@ public class Token implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_Atualizacao;
 	
-	@OneToOne
+	@OneToOne(mappedBy="token")
 	private Cliente cliente;
 	
 	@Override

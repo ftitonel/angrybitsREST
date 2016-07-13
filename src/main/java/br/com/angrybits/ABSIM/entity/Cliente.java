@@ -26,7 +26,7 @@ public class Cliente implements Serializable{
 	private String  usuario_celular;
 	private String tipo_usuario;
 	
-	@OneToOne(mappedBy="cliente", cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private Token token;
 	
 	public Cliente() {
