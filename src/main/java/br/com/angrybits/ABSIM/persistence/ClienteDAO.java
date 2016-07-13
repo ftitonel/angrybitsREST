@@ -1,5 +1,7 @@
 package br.com.angrybits.ABSIM.persistence;
 
+import java.util.List;
+
 import javax.persistence.Query;
 
 import br.com.angrybits.ABSIM.entity.Cliente;
@@ -21,12 +23,11 @@ public class ClienteDAO extends JPACrud<Cliente, Long> {
         return Beans.getReference(ClienteDAO.class);
 	}
 
-	public Cliente findByEmail(String email) {		
+	public List<Cliente> findByEmail(String email) {		
 		String hql = "SELECT Cliente FROM Cliente cliente WHERE cliente.usuario_email=:usuario_email";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("usuario_email", email.trim());
-		query.setMaxResults(1);
-		Cliente cliente = (Cliente) query.getSingleResult();
+		List<Cliente> cliente = query.getResultList();
 		return cliente;
 	}
 

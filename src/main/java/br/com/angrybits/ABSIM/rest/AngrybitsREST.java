@@ -24,52 +24,71 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.ValidatePayload;
 
 @Path("consumo")
-public class AngrybitsREST{	
-		
+public class AngrybitsREST {
+
 	@Inject
 	private ConsumoBC consumoBC;
 	@Inject
 	private ClienteBC clienteBC;
-	
+
 	@POST
 	@Transactional
 	@ValidatePayload
 	@Produces("application/json")
-	@Consumes("application/json")	
-	public Response inserir(ConsumoBody body, @Context UriInfo uriInfo){	
-		String id="";	
+	@Consumes("application/json")
+	public Response inserir(ConsumoBody body, @Context UriInfo uriInfo) {
+		String id = "";
+		if(clienteBC.findAll().size()<=0){
+			Cliente cliente1 = new Cliente("felipe.titonel@gmail.com", "(85)999383404", "PF", null, null);
+			Cliente cliente2 = new Cliente("tamara@gmail.com", "(71)999647153", "PF", null, null);
+			Cliente cliente3 = new Cliente("thadeu@gmail.com", "(88)912344321", "PF", null, null);
+			clienteBC.insert(cliente1);
+			clienteBC.insert(cliente2);
+			clienteBC.insert(cliente3);
+		}
 		
+		List<Cliente> clientes = clienteBC.findByEmail(body.usuario.get(0).getUsuario_email());
+		Cliente cliente = clientes.get(0);
 		Consumo consumo = new Consumo();
-		Cliente cliente = new Cliente();
-				
-		cliente.setTipo_usuario("Fisica");
-		cliente.setUsuario_celular(body.usuario.get(0).getUsuario_celular());
-		cliente.setUsuario_email(body.usuario.get(0).getUsuario_email());		
-		cliente.setToken(body.token.get(0));
-		
-		consumo.setDataConsumo(new Date(System.currentTimeMillis()));
+
+		Date dataAtual = new Date(System.currentTimeMillis());
+		Token token = new Token();
+
+		token = body.token.get(0);
+		// cliente.setUsuario_celular(body.usuario.get(0).getUsuario_celular());
+		// cliente.setUsuario_email(body.usuario.get(0).getUsuario_email());
+		 token.setDataAtualizacao(dataAtual);
+		 
+		 if(cliente.getToken()==null){
+			 cliente.setToken(token);
+		 }else{
+			 cliente.getToken().setToken(token.getToken());
+			 cliente.getToken().setDataAtualizacao(dataAtual);
+		 }
+			 
+		 
+		 
+		 clienteBC.update(cliente);
+
+		consumo.setDataConsumo(dataAtual);
 		consumo.setConsumoDados(body.dados);
 		consumo.setConsumoChamdas(body.chamadas);
-		consumo.setCliente(cliente);
-				
-		clienteBC.insert(cliente);
-		
-		clienteBC.findByEmail(body.usuario.get(0).getUsuario_email());
-		
-		//RESPOSTA PARA CLIENTE
-		id = consumoBC.insert(consumo).getConsumo_id().toString();
-		URI location = uriInfo.getRequestUriBuilder().path(id).build();		
+		consumo.setCliente(clientes.get(0));
+
+		// RESPOSTA PARA CLIENTE
+		//id = "1";
+		 id = consumoBC.insert(consumo).getConsumo_id().toString();
+		URI location = uriInfo.getRequestUriBuilder().path(id).build();
 		return Response.created(location).entity(id).build();
 	}
-	
-	public static class ConsumoBody{
-		
+
+	public static class ConsumoBody {
+
 		public Date dataConsumo;
 		public List<ConsumoDados> dados;
 		public List<ConsumoChamadas> chamadas;
 		public List<Token> token;
 		public List<Cliente> usuario;
-	}	
-	
+	}
 
 }

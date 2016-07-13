@@ -1,5 +1,7 @@
 package br.com.angrybits.ABSIM.business;
 
+import java.util.List;
+
 import br.com.angrybits.ABSIM.entity.Cliente;
 import br.com.angrybits.ABSIM.persistence.ClienteDAO;
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
@@ -15,8 +17,13 @@ public class ClienteBC extends DelegateCrud<Cliente, Long, ClienteDAO>{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public Cliente findByEmail(String email){
-		return ClienteDAO.getInstance().findByEmail(email);
+	public List<Cliente> findByEmail(String email){		
+		try {
+			return ClienteDAO.getInstance().findByEmail(email);
+		} catch (Exception e) {
+			//e.printStackTrace();
+			return null;
+		}
 	}
 
 }

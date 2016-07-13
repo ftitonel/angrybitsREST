@@ -31,8 +31,18 @@ public class Cliente implements Serializable{
 	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
-	}
+	}	
 	
+	public Cliente(String usuario_email, String usuario_celular, String tipo_usuario, Token token,
+			List<Consumo> consumo) {
+		super();
+		this.usuario_email = usuario_email;
+		this.usuario_celular = usuario_celular;
+		this.tipo_usuario = tipo_usuario;
+		this.token = token;
+		this.consumo = consumo;
+	}
+
 	@OneToMany	(mappedBy="cliente")
 	private List<Consumo> consumo;
 	
