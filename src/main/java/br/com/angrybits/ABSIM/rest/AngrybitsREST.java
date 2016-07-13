@@ -55,8 +55,6 @@ public class AngrybitsREST {
 		Token token = new Token();
 
 		token = body.token.get(0);
-		// cliente.setUsuario_celular(body.usuario.get(0).getUsuario_celular());
-		// cliente.setUsuario_email(body.usuario.get(0).getUsuario_email());
 		 token.setDataAtualizacao(dataAtual);
 		 
 		 if(cliente.getToken()==null){
