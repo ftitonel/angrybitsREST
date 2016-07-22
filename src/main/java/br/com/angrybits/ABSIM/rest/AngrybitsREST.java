@@ -13,13 +13,13 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.com.angrybits.ABSIM.business.ClienteBC;
-import br.com.angrybits.ABSIM.business.ConsumoBC;
-import br.com.angrybits.ABSIM.entity.Cliente;
-import br.com.angrybits.ABSIM.entity.Consumo;
-import br.com.angrybits.ABSIM.entity.ConsumoChamadas;
-import br.com.angrybits.ABSIM.entity.ConsumoDados;
-import br.com.angrybits.ABSIM.entity.Token;
+import br.com.angrybits.angrybitsCore.business.ClienteBC;
+import br.com.angrybits.angrybitsCore.business.ConsumoBC;
+import br.com.angrybits.angrybitsCore.entity.Cliente;
+import br.com.angrybits.angrybitsCore.entity.Consumo;
+import br.com.angrybits.angrybitsCore.entity.ConsumoChamadas;
+import br.com.angrybits.angrybitsCore.entity.ConsumoDados;
+import br.com.angrybits.angrybitsCore.entity.Token;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.ValidatePayload;
 
