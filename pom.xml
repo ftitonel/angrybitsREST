@@ -10,7 +10,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name></name>
+	<name>AngrybitsSIM</name>
 	<description></description>
 	<url></url>
 
@@ -21,6 +21,11 @@
 	</parent>
 
 	<dependencies>
+		<dependency>
+			<groupId>br.com.angrybits</groupId>
+			<artifactId>angrybitsCore</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- Demoiselle dependencies -->
 		<dependency>
 			<groupId>br.gov.frameworkdemoiselle</groupId>
@@ -53,11 +58,6 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.3.4</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.192</version>
 		</dependency>
 	</dependencies>
 </project>
