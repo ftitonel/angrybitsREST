@@ -27,11 +27,11 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- Demoiselle dependencies -->
-		<dependency>
-			<groupId>br.gov.frameworkdemoiselle</groupId>
-			<artifactId>demoiselle-jpa</artifactId>
-			<scope>compile</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>br.gov.frameworkdemoiselle</groupId> -->
+<!-- 			<artifactId>demoiselle-jpa</artifactId> -->
+<!-- 			<scope>compile</scope> -->
+<!-- 		</dependency> -->
 		<!-- Uncomment this dependency if you are using a JTA -->
 		<!-- <dependency> <groupId>br.gov.frameworkdemoiselle</groupId> <artifactId>demoiselle-jta</artifactId> 
 			<scope>compile</scope> </dependency> -->
