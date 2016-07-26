@@ -7,10 +7,10 @@
 
 	<groupId>br.com.angrybits</groupId>
 	<artifactId>ABSIM</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>AngrybitsSIM</name>
+	<name>angrybitsSIM</name>
 	<description></description>
 	<url></url>
 
