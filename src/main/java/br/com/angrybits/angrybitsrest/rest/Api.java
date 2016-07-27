@@ -1,4 +1,4 @@
-package br.com.angrybits.ABSIM.rest;
+package br.com.angrybits.angrybitsrest.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

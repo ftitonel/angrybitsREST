@@ -6,11 +6,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.angrybits</groupId>
-	<artifactId>ABSIM</artifactId>
+	<artifactId>angrybitsrest</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>angrybitsSIM</name>
+	<name>angrybitsREST</name>
 	<description></description>
 	<url></url>
 

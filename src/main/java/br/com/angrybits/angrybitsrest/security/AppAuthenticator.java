@@ -1,4 +1,4 @@
-package br.com.angrybits.ABSIM.security;
+package br.com.angrybits.angrybitsrest.security;
 
 import java.security.Principal;
 

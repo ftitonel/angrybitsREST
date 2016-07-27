@@ -1,4 +1,4 @@
-package br.com.angrybits.ABSIM.rest;
+package br.com.angrybits.angrybitsrest.rest;
 
 import java.net.URI;
 import java.sql.Date;
